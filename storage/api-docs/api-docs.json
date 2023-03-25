@@ -1,0 +1,35 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "직원 관리 시스템",
+        "description": "직원 관리 시스템",
+        "contact": {
+            "email": "devbam515@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/notice/api/v1/comment/{notice}": {
+            "post": {
+                "tags": [
+                    "사용자 공지사항"
+                ],
+                "operationId": "f247bd206edc12e2d44a63d445919727",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "500": {
+                        "description": "Fail"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "사용자 공지사항",
+            "description": "사용자 공지사항 관련 API"
+        }
+    ]
+}
