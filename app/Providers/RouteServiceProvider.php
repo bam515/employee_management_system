@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/';
 
     /**
      * The controller namespace for the application.
@@ -38,6 +38,16 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
+            // ============================================ ADMIN ====================================================
+            Route::prefix('admin/notice')
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/admin/notice.php'));
+            // ============================================ USER ====================================================
+            Route::prefix('notice')
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/user/notice.php'));
             Route::prefix('api')
                 ->middleware('api')
                 ->namespace($this->namespace)
