@@ -15,6 +15,33 @@
                     "사용자 공지사항"
                 ],
                 "operationId": "f247bd206edc12e2d44a63d445919727",
+                "parameters": [
+                    {
+                        "name": "notice_id",
+                        "in": "path",
+                        "description": "공지사항 PK",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "comment"
+                                ],
+                                "properties": {
+                                    "comment": {
+                                        "type": "string",
+                                        "example": "댓글 내용"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Success"
