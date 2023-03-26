@@ -67,20 +67,37 @@ class NoticeController extends Controller
 
     // 공지사항 첨부파일 다운로드
     public function downloadFile(Notice $notice) {
+        $file = $notice->file;
 
+        return response()->download('public/storage/notice/' . $file, basename($notice->origin_file));
     }
 
     /**
      * @OA\Post(
      *     path="/notice/api/v1/comment/{notice}",
      *     tags={"사용자 공지사항"},
-     *     @OA\Response(
-     *     response=200,
-     *     description="Success"
+     *     @OA\Parameter(
+     *         name="notice_id",
+     *         required=true,
+     *         description="공지사항 PK",
+     *         in="path"
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"comment"},
+     *             @OA\Property(
+     *                 property="comment", type="string", example="댓글 내용"
+     *             ),
+     *         ),
      *     ),
      *     @OA\Response(
-     *     response=500,
-     *     description="Fail",
+     *         response=200,
+     *         description="Success"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Fail",
      *     )
      * ),
      */
