@@ -12,7 +12,7 @@ class LoginController extends Controller
 {
     // 로그인 폼
     public function loginForm() {
-        return view('admin.login');
+        return view('admin.login.login');
     }
 
     // 로그인
