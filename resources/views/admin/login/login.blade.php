@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('admin.login.layout')
 
 @section('content')
     <form>
