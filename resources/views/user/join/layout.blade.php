@@ -8,6 +8,6 @@
     <title>직원 관리 시스템</title>
 </head>
 <body>
-
+@yield('content')
 </body>
 </html>
