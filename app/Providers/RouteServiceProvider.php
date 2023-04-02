@@ -44,10 +44,18 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/admin/notice.php'));
             // ============================================ USER ====================================================
+            // 공지사항
             Route::prefix('notice')
                 ->middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/user/notice.php'));
+
+            // 회원가입
+            Route::prefix('join')
+                ->middleware('web')
+                ->name($this->namespace)
+                ->group(base_path('routes/user/join.php'));
+
             Route::prefix('api')
                 ->middleware('api')
                 ->namespace($this->namespace)

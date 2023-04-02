@@ -7,7 +7,7 @@ use App\Http\Controllers\User\LoginController;
 Route::get('/login', [LoginController::class, 'loginForm'])->name('login-form');
 
 // 로그인
-Route::post('/logint', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 // 로그아웃
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
