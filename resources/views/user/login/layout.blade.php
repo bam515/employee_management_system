@@ -8,10 +8,13 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <title>직원 관리 시스템 - 로그인</title>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
 </head>
 <body>
-<div class="container">
-    @yield('content')
-</div>
+<main>
+    <div class="container">
+        @yield('content')
+    </div>
+</main>
 </body>
 </html>
