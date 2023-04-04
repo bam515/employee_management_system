@@ -14,10 +14,12 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </head>
 <body>
+@include('user.include.header')
 <main>
     <div class="container">
         @yield('content')
     </div>
 </main>
+@include('user.include.footer')
 </body>
 </html>
