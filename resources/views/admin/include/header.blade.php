@@ -7,19 +7,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#">홈 <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">홈</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">직원관리</a>
+                <a class="nav-link" href="{{ route('admin.employee.access') }}">직원관리</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">휴가관리</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">공지사항</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
             </li>
         </ul>
     </div>

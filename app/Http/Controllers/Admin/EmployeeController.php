@@ -25,7 +25,7 @@ class EmployeeController extends Controller
         DB::beginTransaction();
         try {
             $user->update([
-                'join_date' => now(),
+                'jon_date' => now(),
                 'status' => 1
             ]);
             $code = 200;
