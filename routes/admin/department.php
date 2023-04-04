@@ -13,7 +13,7 @@ Route::get('/create', [DepartmentController::class, 'create'])->name('admin.depa
 Route::post('/', [DepartmentController::class, 'store'])->name('admin.department.store');
 
 // 부서 수정 폼
-Route::get('/{department}', [DepartmentController::class, 'edit'])->name('admin.department.edit');
+Route::get('/edit/{department}', [DepartmentController::class, 'edit'])->name('admin.department.edit');
 
 // 부서 수정
 Route::put('/{department}', [DepartmentController::class, 'update'])->name('admin.department.update');

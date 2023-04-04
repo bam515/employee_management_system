@@ -8,8 +8,12 @@
     <title>직원 관리 시스템 - 공지사항</title>
 </head>
 <body>
-<div class="container">
-    @yield('content')
-</div>
+@include('user.include.header')
+<main>
+    <div class="container">
+        @yield('content')
+    </div>
+</main>
+@include('user.include.footer')
 </body>
 </html>
