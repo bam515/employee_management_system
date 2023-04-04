@@ -16,5 +16,5 @@ class User extends Authenticatable
     protected $primaryKey = 'user_id';
     public $timestamps = false;
     protected $fillable = ['emp_no', 'name', 'birth', 'phone', 'address', 'login_id', 'password', 'user_type',
-        'created_at', 'updated_at'];
+        'join_date', 'created_at', 'updated_at', 'status'];
 }

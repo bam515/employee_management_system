@@ -23,6 +23,8 @@ class CreateUserTable extends Migration
             $table->string('login_id', 45);
             $table->string('password', 255);
             $table->integer('user_type')->default(0);
+            $table->integer('status')->default(0);
+            $table->dateTime('join_date')->nullable();
             $table->timestamps();
         });
     }
