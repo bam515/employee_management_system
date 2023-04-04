@@ -39,6 +39,11 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
             // ============================================ ADMIN ====================================================
+            // 직원관리
+            Route::prefix('admin/employee')
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/admin/employee.php'));
             Route::prefix('admin/notice')
                 ->middleware('web')
                 ->namespace($this->namespace)
