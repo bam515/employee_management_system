@@ -11,22 +11,17 @@ use App\Exports\Admin\EmployeeExport;
 
 class EmployeeController extends Controller
 {
-    // 직원 관리 - index
-    public function index(Request $request) {
-        $request->flash();
-
-        $rows = User::latest()->paginate(10);
-
-        return view('admin.employee.index', compact('rows'));
-    }
-
     // 회원가입 승인
-    public function accessSignup(User $user) {
+    public function accessSignup(User $user, Request $request) {
         DB::beginTransaction();
         try {
+            $count = User::count();
+            $emp_no = date('Ymd') . $request->department . (++$count);
             $user->update([
-                'jon_date' => now(),
-                'status' => 1
+                'join_date' => now(),
+                'status' => 1,
+                'department_id' => $request->department,
+                'emp_no' => $emp_no
             ]);
             $code = 200;
             $msg = 'success';

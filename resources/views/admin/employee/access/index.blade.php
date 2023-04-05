@@ -23,11 +23,14 @@
                 <td>{{ $row->phone }}</td>
                 <td>{{ $row->address }}</td>
                 <td>
-                    <button type="button" class="btn btn-primary">승인</button>
-                    <button type="button" class="btn btn-danger">반려</button>
+                    <button type="button" class="btn btn-primary"
+                            onclick="accessEmployee({{ $row->user_id }})">승인</button>
+                    <button type="button" class="btn btn-danger"
+                            onclick="rejectEmployee({{ $row->user_id }})">반려</button>
                 </td>
             </tr>
         @endforeach
         </tbody>
     </table>
 @endsection
+
