@@ -23,11 +23,39 @@
                 <td>{{ $row->phone }}</td>
                 <td>{{ $row->address }}</td>
                 <td>
-                    <button type="button" class="btn btn-primary">승인</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#access_popup">승인</button>
                     <button type="button" class="btn btn-danger">반려</button>
                 </td>
             </tr>
         @endforeach
         </tbody>
     </table>
+    <div class="modal fade" id="access_popup">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function accessEmployee(no) {
+
+        }
+
+        function rejectEmployee(no) {
+
+        }
+    </script>
 @endsection
