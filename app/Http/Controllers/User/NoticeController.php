@@ -131,10 +131,41 @@ class NoticeController extends Controller
     public function updateComment(NoticeComment $comment, Request $request) {
         DB::beginTransaction();
         try {
+            if ($comment->user_id !== Auth::guard('web')->user()->user_id) {
+                return response()->json([
+                    'code' => 403,
+                    'message' => 'fail'
+                ]);
+            }
             $comment->update([
                 'notice_comment' => $request->comment,
                 'updated_at' => now()
             ]);
+            $msg = 'success';
+            $code = 200;
+            DB::commit();
+        } catch (\Exception $exception) {
+            $msg = $exception->getMessage();
+            $code = 500;
+            DB::rollBack();
+        }
+        return response()->json([
+            'code' => $code,
+            'message' => $msg
+        ]);
+    }
+
+    // 공지사항 댓글 삭제
+    public function deleteComment(NoticeComment $comment) {
+        DB::beginTransaction();
+        try {
+            if ($comment->user_id !== Auth::guard('web')->user()->user_id) {
+                return response()->json([
+                    'code' => 403,
+                    'message' => 'fail'
+                ]);
+            }
+            $comment->delete();
             $msg = 'success';
             $code = 200;
             DB::commit();
