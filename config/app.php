@@ -178,7 +178,10 @@ return [
         /*
          * swagger
          */
-        L5Swagger\L5SwaggerServiceProvider::class
+        L5Swagger\L5SwaggerServiceProvider::class,
+
+
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     ],
 
     /*

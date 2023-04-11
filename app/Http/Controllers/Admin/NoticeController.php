@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Notice;
+use App\Models\NoticeComment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class NoticeController extends Controller
@@ -112,5 +114,74 @@ class NoticeController extends Controller
             DB::rollBack();
         }
         return response()->json(['message' => $msg]);
+    }
+
+    // 공지사항 댓글 작성
+    public function storeComment(Notice $notice, Request $request) {
+        DB::beginTransaction();
+
+        try {
+            NoticeComment::create([
+                'notice_id' => $notice->notice_id,
+                'user_id' => Auth::guard('web')->user()->user_id,
+                'notice_comment' => $request->comment,
+                'created_at' => now(),
+                'updated_at' => null
+            ]);
+            $code = 200;
+            $message = 'success';
+            DB::commit();
+        } catch (\Exception $exception) {
+            $code = 500;
+            $message = $exception->getMessage();
+            DB::rollBack();
+        }
+        return response()->json([
+            'code' => $code,
+            'message' => $message
+        ]);
+    }
+
+    // 공지사항 댓글 수정
+    public function updateComment(NoticeComment $comment, Request $request) {
+        DB::beginTransaction();
+
+        try {
+            $comment->update([
+                'notice_comment' => $request->comment,
+                'updated_at' => now(),
+            ]);
+            $code = 200;
+            $message = 'success';
+            DB::commit();
+        } catch (\Exception $exception) {
+            $code = 500;
+            $message = $exception->getMessage();
+            DB::rollBack();
+        }
+        return response()->json([
+            'code' => $code,
+            'message' => $message
+        ]);
+    }
+
+    // 공지사항 댓글 삭제
+    public function deleteComment(NoticeComment $comment) {
+        DB::beginTransaction();
+
+        try {
+            $comment->delete();
+            $code = 200;
+            $message = 'success';
+            DB::commit();
+        } catch (\Exception $exception) {
+            $code = 500;
+            $message = $exception->getMessage();
+            DB::rollBack();
+        }
+        return response()->json([
+            'code' => $code,
+            'message' => $message
+        ]);
     }
 }
